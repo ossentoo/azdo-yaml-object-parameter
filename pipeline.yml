@@ -1,7 +1,7 @@
 stages:
 - stage:
   jobs:
-  - template: jobs.yml  
+  - template: templates/jobs.yml  
     parameters:
       repositories: 
       - name: application_web

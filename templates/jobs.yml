@@ -4,7 +4,7 @@ parameters:
 jobs:
 - ${{ each repository in parameters.repositories}}:
   - deployment: test${{repository.job}}
-    displayName: test powershell ${{repository.name}}
+    displayName: test ${{repository.name}}
     pool: 
       name: Windows
     environment: DEV
