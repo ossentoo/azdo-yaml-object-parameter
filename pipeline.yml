@@ -4,7 +4,6 @@ stages:
   - template: jobs.yml  
     parameters:
       repositories: 
-      - name: 
       - name: application_web
         job: applicationweb
       - name: application_api

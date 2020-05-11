@@ -1,4 +1,6 @@
+parameters:
+    repository: ''
 steps:
 - checkout: none
 - powershell: |
-    Write-Host "Done"
+    Write-Host "Found ${{parameters.repository}}"
