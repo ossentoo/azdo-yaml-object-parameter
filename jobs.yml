@@ -1,0 +1,28 @@
+parameters:
+  application: ''
+  environment: ''
+  subscription: ''
+  tagBuildId: ''
+  tagBuildNumber: ''
+  repositories: 
+    - name: application-web
+      job: applicationweb
+    - name: application-api
+      job: applicationapi
+
+jobs:
+- ${{ each repository in parameters.repositories}}:
+  - deployment: tagdockerimage${{repository.job}}
+    displayName: tag image ${{repository.name}}
+    pool: 
+      name: Windows
+    environment: ${{parameters.environment}}
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - template: job.yml
+            parameters:
+              environment: ${{parameters.environment}}
+              subscription: ${{parameters.subscription}}
+              repository: ${{repository.name}}
